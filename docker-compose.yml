@@ -1,0 +1,15 @@
+version: "3"  
+services:  
+ prometheus:
+      image: prom/prometheus:latest
+      ports: 
+      - 9090:9090
+      volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+ app:
+      container_name: app
+      build: ./src/.
+      ports:
+      - "8000:8000"
+      volumes:
+      - "./src/app.py:/app.py"
